@@ -2,31 +2,35 @@
 
 ## users テーブル
 
-| Column   | Type     | Options                  |
-| -------- | -------- | ------------------------ |
-| nickname | string   | null: false,unique: true |
-| email    | string   | null: false              |
-| password | string   | null: false              |
-| name     | string   | null: false              |
-| katakana | string   | null: false              |
-| DOB      | datetime | null: false              |
+| Column              | Type     | Options     |
+| ------------------- | -------- | ----------- |
+| nickname            | string   | null: false |
+| email               | string   | null: false |
+| encrypted_password  | string   | null: false |
+| last_name           | string   | null: false |
+| first_name          | string   | null: false |
+| last_name_katakana  | string   | null: false |
+| first_name_katakana | string   | null: false |
+| birthday            | date     | null: false |
 
 ## items テーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| amount of money  | integer    | null: false                    |
-| image            | string     | null: false                    |
-| text             | text       | null: false                    |
-| state            | references | null: false                    |
-| rough_indication | datetime   | null: false                    |
-| user             | references | null: false  foreign_key: true |
-| shipping address | references | null: false  foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| item_name       | string     | null: false                    |
+| item_text       | text       | null: false                    |
+| amount_of_money | integer    | null: false                    |
+| category        | string     | null: false                    |
+| condition       | string     | null: false                    |
+| delivery_charge | string     | null: false                    |
+| area            | string     | null: false                    |
+| number_of_days  | string     | null: false                    |
+| user            | references | null: false  foreign_key: true |
 
 ### Association
-- has_one :shipping address
+- has_one :shipping_address
 
-## purchase informations テーブル
+## purchase_informations テーブル
 
 | Column | Type       | Options                       |
 | ------ | ---------- | ----------------------------- |
@@ -34,15 +38,17 @@
 | item   | references | null: false,foreign_key: true |
 
 ### Association
-- has_one :shipping address
+- has_one :shipping_address
 
-## shipping addresses テーブル
+## shipping_addresses テーブル
 
-| Column | Type       | Options                       |
-| ------ | ---------- | ----------------------------- |
-| adress | text       | null: false                   |
-| user   | references | null: false,foreign_key: true |
+| Column      | Type       | Options                       |
+| ----------- | ---------- | ----------------------------- |
+| postal_code | string     | null: false                   |
+| adress      | string     | null: false                   |
+| number      | string     | null: false                   |
+| user        | references | null: false,foreign_key: true |
 
 ### Association
 - belongs_to :item
-- belongs_to :purchase information
+- belongs_to :purchase_information
