@@ -1,24 +1,48 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column   | Type     | Options                  |
+| -------- | -------- | ------------------------ |
+| nickname | string   | null: false,unique: true |
+| email    | string   | null: false              |
+| password | string   | null: false              |
+| name     | string   | null: false              |
+| katakana | string   | null: false              |
+| DOB      | datetime | null: false              |
 
-* Ruby version
+## items テーブル
 
-* System dependencies
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| amount of money  | integer    | null: false                    |
+| image            | string     | null: false                    |
+| text             | text       | null: false                    |
+| state            | references | null: false                    |
+| rough_indication | datetime   | null: false                    |
+| user             | references | null: false  foreign_key: true |
+| shipping address | references | null: false  foreign_key: true |
 
-* Configuration
+### Association
+- has_one :shipping address
 
-* Database creation
+## purchase informations テーブル
 
-* Database initialization
+| Column | Type       | Options                       |
+| ------ | ---------- | ----------------------------- |
+| user   | references | null: false,foreign_key: true |
+| item   | references | null: false,foreign_key: true |
 
-* How to run the test suite
+### Association
+- has_one :shipping address
 
-* Services (job queues, cache servers, search engines, etc.)
+## shipping addresses テーブル
 
-* Deployment instructions
+| Column | Type       | Options                       |
+| ------ | ---------- | ----------------------------- |
+| adress | text       | null: false                   |
+| user   | references | null: false,foreign_key: true |
 
-* ...
+### Association
+- belongs_to :item
+- belongs_to :purchase information
