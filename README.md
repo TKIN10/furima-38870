@@ -16,8 +16,6 @@
 ### Association
 - has_many :items
 - has_many :shipping_addresses
-- has_one :items
-- has_one :purchase_informations
 
 ## items テーブル
 
@@ -34,8 +32,8 @@
 | user               | references  | null: false  foreign_key: true |
 
 ### Association
-- has_one :purchase_informations
-- belongs_to :users
+- has_one :purchase_information
+- belongs_to :user
 
 ## purchase_informations テーブル
 
@@ -45,8 +43,9 @@
 | item   | references | null: false,foreign_key: true |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- has_one :shipping_address
+- belongs_to :user
+- belongs_to :item
 
 ## shipping_addresses テーブル
 
