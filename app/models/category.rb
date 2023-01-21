@@ -13,5 +13,6 @@ class Category < ActiveHash::Base
     { id: 11, name: 'その他' }
   ]
 
+nclude ActiveHash::Associations
 belongs_to :item
 end
