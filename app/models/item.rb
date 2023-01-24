@@ -11,8 +11,7 @@ class Item < ApplicationRecord
   validates :image, presence: true
   validates :item_name, presence: true
   validates :item_text, presence: true
-  VALID_PRICEL_HALF = /\A[0-9]+\z/
-  validates :amount_of_money, presence: true, numericality: { with: VALID_PRICEL_HALF, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :amount_of_money, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :category_id, presence: true, numericality: { other_than: 1 }
   validates :condition_id, presence: true, numericality: { other_than: 1 }
   validates :delivery_charge_id, presence: true, numericality: { other_than: 1 }
