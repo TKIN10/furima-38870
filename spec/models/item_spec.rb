@@ -48,27 +48,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Amount of money is not a number"
       end
       it 'category_idが空では登録できない' do
-        @item.category_id = "1"
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Category must be other than 1"
       end
       it 'condition_idが空では登録できない' do
-        @item.condition_id = "1"
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Condition must be other than 1"
       end
       it 'delivery_charge_idが空では登録できない' do
-        @item.delivery_charge_id = "1"
+        @item.delivery_charge_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Delivery charge must be other than 1"
       end
       it 'area_idが空では登録できない' do
-        @item.area_id = "1"
+        @item.area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Area must be other than 1"
       end
       it 'number_of_day_idが空では登録できない' do
-        @item.number_of_day_id = "1"
+        @item.number_of_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Number of day must be other than 1"
       end
