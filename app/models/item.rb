@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_one_attached :image
+  has_many :shipping_addresses
   belongs_to :category
   belongs_to :condition
   belongs_to :delivery_charge
