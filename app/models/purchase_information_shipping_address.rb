@@ -6,7 +6,6 @@ class PurchaseInformationShippingAddress
   validates :postal_code, presence: true,format: { with: /\A\d{3}[-]\d{4}\z/ }
   validates :municipality, presence: true
   validates :adress, presence: true
-  validates :bulding_name, presence: true
   validates :number, presence: true,format: { with: /\A\d{10,11}\z/ }
   validates :token, presence: true
 
