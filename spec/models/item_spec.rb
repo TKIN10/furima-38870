@@ -50,27 +50,27 @@ RSpec.describe Item, type: :model do
       it 'category_idが空では登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Category must be other than 1"
+        expect(@item.errors.full_messages).to include "Category を選択してください"
       end
       it 'condition_idが空では登録できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Condition must be other than 1"
+        expect(@item.errors.full_messages).to include "Condition を選択してください"
       end
       it 'delivery_charge_idが空では登録できない' do
         @item.delivery_charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Delivery charge must be other than 1"
+        expect(@item.errors.full_messages).to include "Delivery charge を選択してください"
       end
       it 'area_idが空では登録できない' do
         @item.area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Area must be other than 1"
+        expect(@item.errors.full_messages).to include "Area を選択してください"
       end
       it 'number_of_day_idが空では登録できない' do
         @item.number_of_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Number of day must be other than 1"
+        expect(@item.errors.full_messages).to include "Number of day を選択してください"
       end
       it 'userが紐付いていないと保存できない' do
         @item.user = nil

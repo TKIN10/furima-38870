@@ -3,7 +3,7 @@ class PurchaseInformationShippingAddress
   attr_accessor :area_id, :postal_code, :municipality, :adress, :bulding_name, :number, :user_id, :item_id, :token
 
   with_options presence: true do
-    validates :area_id, numericality: { other_than: 1 }
+    validates :area_id, numericality: { other_than: 1 ,message: 'を選択してください'}
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :municipality
     validates :adress

@@ -32,7 +32,7 @@ RSpec.describe PurchaseInformationShippingAddress, type: :model do
       it 'area_idが空では登録できない' do
         @purchase_information_shipping_address.area_id = 1
         @purchase_information_shipping_address.valid?
-        expect(@purchase_information_shipping_address.errors.full_messages).to include "Area must be other than 1"
+        expect(@purchase_information_shipping_address.errors.full_messages).to include "Area を選択してください"
       end
       it 'municipalityが空では登録できない' do
         @purchase_information_shipping_address.municipality = ''
