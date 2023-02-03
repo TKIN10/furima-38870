@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe PurchaseInformationShippingAddress, type: :model do
   describe '購入情報の保存' do
     before do
-      @user = FactoryBot.create(:user)
-      @item = FactoryBot.build(:item)
-      @purchase_information_shipping_address = FactoryBot.build(:purchase_information_shipping_address)
+      user = FactoryBot.create(:user)
+      item = FactoryBot.create(:item)
+      @purchase_information_shipping_address = FactoryBot.build(:purchase_information_shipping_address,user_id: user.id,item_id: item.id)
     end
 
     context '内容に問題ない場合' do
@@ -54,10 +54,30 @@ RSpec.describe PurchaseInformationShippingAddress, type: :model do
         @purchase_information_shipping_address.valid?
         expect(@purchase_information_shipping_address.errors.full_messages).to include "Number is invalid"
       end
+      it 'numberが9桁以下では保存できない' do
+        @purchase_information_shipping_address.number = '12345678'
+        @purchase_information_shipping_address.valid?
+        expect(@purchase_information_shipping_address.errors.full_messages).to include "Number is invalid"
+      end
+      it 'numberが12桁以上では保存できない' do
+        @purchase_information_shipping_address.number = '123456789012'
+        @purchase_information_shipping_address.valid?
+        expect(@purchase_information_shipping_address.errors.full_messages).to include "Number is invalid"
+      end
       it "tokenが空では登録できないこと" do
         @purchase_information_shipping_address.token = ''
         @purchase_information_shipping_address.valid?
         expect(@purchase_information_shipping_address.errors.full_messages).to include "Token can't be blank"
+      end
+      it 'user_idが紐付いていないと保存できないこと' do
+        @purchase_information_shipping_address.user_id = nil
+        @purchase_information_shipping_address.valid?
+        expect(@purchase_information_shipping_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが紐付いていないと保存できないこと' do
+        @purchase_information_shipping_address.item_id = nil
+        @purchase_information_shipping_address.valid?
+        expect(@purchase_information_shipping_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end

@@ -8,6 +8,8 @@ class PurchaseInformationShippingAddress
   validates :adress, presence: true
   validates :number, presence: true,format: { with: /\A\d{10,11}\z/ }
   validates :token, presence: true
+  validates :item_id, presence: true
+  validates :user_id, presence: true
 
   def save
     purchase_information = PurchaseInformation.create(user_id: user_id, item_id: item_id)
